@@ -80,8 +80,8 @@ export class ProductActionComponent implements OnInit {
     this.pageListProduct();
   }
   nextPage() {
-    if (this.page > this.totalPage) {
-      this.page = this.totalPage - 1;
+    if (this.page >= this.totalPage) {
+      this.page = this.totalPage;
     } else {
       this.page = this.page + 1;
     }

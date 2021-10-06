@@ -57,7 +57,8 @@ export class CategoryActionComponent implements OnInit {
       }
     );
   }
-  onUpdateCategory(category: Category): void {
+  onUpdateCategory(category: Category, name): void {
+    category.categoryName = name;
     document.getElementById('edit-category-form').click();
     this.categoryService.putCategory(category).subscribe(
       (response: Category) => {
