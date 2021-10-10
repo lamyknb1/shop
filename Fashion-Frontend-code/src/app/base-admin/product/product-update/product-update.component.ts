@@ -43,7 +43,7 @@ export class ProductUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
-      id: '',
+      productId: '',
       name: ['', [Validators.required, Validators.minLength(1)]],
       price: ['', [Validators.required, Validators.min(0)]],
       description: ['', [Validators.required]],
@@ -80,16 +80,11 @@ export class ProductUpdateComponent implements OnInit {
   }
   onSubmit() {
     if (this.productForm.valid) {
+      console.log(this.productForm);
       const {value} = this.productForm;
       this.product = value;
       for (const preview of this.previewUrl) {
-        this.pictureService.postPicture(preview).subscribe(
-          next => {
-            this.picture.push({
-              pictureId: next
-            });
-          }
-        );
+        this.productService.putProduct(this.product);
       }
     } else {
       console.log('error');
