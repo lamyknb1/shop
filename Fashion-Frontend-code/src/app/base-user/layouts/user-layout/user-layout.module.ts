@@ -9,6 +9,7 @@ import {UserLayoutRoutes} from './user-layout.routing';
 import {UserProductComponent} from '../../user-product/user-product.component';
 import {CartComponent} from '../../cart/cart.component';
 import {HomeComponent} from '../../home/home.component';
+import {CardProductComponent} from '../../user-product/card-product/card-product.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import {HomeComponent} from '../../home/home.component';
   declarations: [
     UserProductComponent,
     CartComponent,
-    HomeComponent
+    HomeComponent,
+    CardProductComponent
   ]
 })
 
