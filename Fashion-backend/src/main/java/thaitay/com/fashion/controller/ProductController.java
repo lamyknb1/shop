@@ -114,7 +114,7 @@ public class ProductController {
     public ResponseEntity<Map<String, Object>> getProductWithPaging(
              @PathVariable("pageIndex") Integer page/*,
              @RequestParam(name = "pageSize", defaultValue = "6") Integer size*/) {
-        Map<String, Object> product = productService.getAllWithPagination(page, 6);
+        Map<String, Object> product = productService.getAllWithPagination(page, 20);
 
         if (product.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

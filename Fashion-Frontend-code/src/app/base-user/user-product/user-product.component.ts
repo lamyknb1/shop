@@ -10,6 +10,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {Product} from '../../models/product';
 import {Supplier} from '../../models/supplier';
 import {Category} from '../../models/category';
+import {Subscription} from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-user-product',
@@ -23,6 +24,14 @@ export class UserProductComponent implements OnInit {
   picture: any[];
   name: any;
   productId: number;
+  private subscription: Subscription;
+  // page
+  private page = 1;
+  private totalPage: number;
+  public productPage: Product[] = [];
+  private listProductNotPage: Product[];
+  private notification: string;
+  pageItem = [];
 
   constructor(private productService: ProductService,
               private token: TokenStorageService,
@@ -36,11 +45,53 @@ export class UserProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getListProduct();
+    this.pageListProduct();
   }
   getListProduct() {
     this.productService.getListProduct().subscribe(data => {
       this.product = data;
       console.log(data);
     });
+  }
+  pageListProduct() {
+    this.subscription = this.productService.getPageProduct(this.page).subscribe(
+      data => {
+        this.productPage = data.product;
+        this.totalPage = data.totalPage;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    this.pageItem = Array(length = this.totalPage );
+  }
+  setPage(pages: number) {
+    this.page = pages;
+    this.pageListProduct();
+  }
+  firstPage() {
+    this.page = 1;
+    this.pageListProduct();
+  }
+  previousPage() {
+    if (this.page <= 1) {
+      this.page = 1;
+    } else {
+      this.page = this.page - 1;
+    }
+    this.pageListProduct();
+  }
+  nextPage() {
+    if (this.page >= this.totalPage) {
+      this.page = this.totalPage;
+    } else {
+      this.page = this.page + 1;
+    }
+    this.pageListProduct();
+  }
+  lastPage() {
+    this.page = this.totalPage;
+    this.pageListProduct();
   }
 }
