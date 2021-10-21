@@ -21,6 +21,7 @@ import { SupplierActionComponent} from '../../supplier/supplier-action/supplier-
 import { UserActionComponent} from '../../user/user-action/user-action.component';
 import { OrderActionComponent} from '../../order/order-action/order-action.component';
 import {ProductDetailActionComponent} from '../../product-detail/product-detail-action/product-detail-action.component';
+import {TableProductComponent} from '../../product/product-action/table-product/table-product.component';
 
 
 
@@ -38,19 +39,20 @@ import {ProductDetailActionComponent} from '../../product-detail/product-detail-
     MatInputModule,
     MatOptionModule,
   ],
-  declarations: [
-    UserProfileComponent,
-    IconsComponent,
-    ProductActionComponent,
-    ProductCreateComponent,
-    ProductDeleteComponent,
-    ProductUpdateComponent,
-    CategoryActionComponent,
-    SupplierActionComponent,
-    UserActionComponent,
-    OrderActionComponent,
-    ProductDetailActionComponent
-  ],
+    declarations: [
+        UserProfileComponent,
+        IconsComponent,
+        ProductActionComponent,
+        ProductCreateComponent,
+        ProductDeleteComponent,
+        ProductUpdateComponent,
+        CategoryActionComponent,
+        SupplierActionComponent,
+        UserActionComponent,
+        OrderActionComponent,
+        ProductDetailActionComponent,
+        TableProductComponent
+    ],
   providers: [
   ]
 })

@@ -76,10 +76,11 @@
               <th>Số Lượng</th>
               <th>Danh Mục</th>
               <th>Nhà Cung Cấp</th>
+              <th>Ảnh minh họa</th>
               <th class="text-right">Công cụ</th>
               </thead>
-              <tbody>
-              <tr *ngFor="let product of productPage, let i=index">
+              <tbody *ngFor="let product of productPage, let i=index">
+
                 <td>{{product.productId}}</td>
                 <td>{{product.name}}</td>
 <!--                <td >-->
@@ -91,6 +92,7 @@
                 <td>{{product.quantity}}</td>
                 <td>{{product.category.categoryName}}</td>
                 <td>{{product.supplier.supplierName}}</td>
+                <td><app-table-product [product]="product" productId="{{product.productId}}"></app-table-product></td>
                 <td class="td-actions text-right">
                   <button (click)="detailProduct(product.productId)" type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Show">
                     <i class="now-ui-icons ui-1_zoom-bold"></i>
@@ -102,7 +104,7 @@
                     <i class="now-ui-icons ui-1_simple-remove"></i>
                   </button>
                 </td>
-              </tr>
+
               </tbody>
             </table>
 
