@@ -10,6 +10,8 @@ import {UserProductComponent} from '../../user-product/user-product.component';
 import {CartComponent} from '../../cart/cart.component';
 import {HomeComponent} from '../../home/home.component';
 import {CardProductComponent} from '../../user-product/card-product/card-product.component';
+import {CartProductsComponent} from '../../cart/cart-products/cart-products.component';
+import {CartProductPictureComponent} from '../../cart/cart-products/cart-product-picture/cart-product-picture.component';
 
 @NgModule({
   imports: [
@@ -24,7 +26,9 @@ import {CardProductComponent} from '../../user-product/card-product/card-product
     UserProductComponent,
     CartComponent,
     HomeComponent,
-    CardProductComponent
+    CardProductComponent,
+    CartProductsComponent,
+    CartProductPictureComponent
   ]
 })
 

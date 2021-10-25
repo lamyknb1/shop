@@ -1,2 +1,1 @@
-<p>hiển thị giỏ hàng và các sản phẩm đặt mua</p>
-
+<app-cart-products [product]="products" (onRemoveProduct)="removeProduct($event)" (onUpdateQuantity)="updateQuantity($event)" numberItem="{{numberItem}}"></app-cart-products>
