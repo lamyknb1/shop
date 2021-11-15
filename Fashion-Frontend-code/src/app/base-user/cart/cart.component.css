@@ -36,21 +36,21 @@ button {
   cursor: pointer;
 }
 
-button::after {
-  position: relative;
-  right: 0;
-  content: " \276f";
-  transition: all 0.15s linear;
-}
+/*button::after {*/
+/*  position: relative;*/
+/*  right: 0;*/
+/*  content: " \276f";*/
+/*  transition: all 0.15s linear;*/
+/*}*/
 
 button:hover {
   background-color: #f58551;
   border-color: #f58551;
 }
 
-button:hover::after {
-  right: -5px;
-}
+/*button:hover::after {*/
+/*  right: -5px;*/
+/*}*/
 
 button:focus {
   outline: none;
@@ -352,4 +352,17 @@ header .count {
   html {
     font-size: 16px;
   }
+}
+.actived{
+  display: unset;
+}
+.hidenItem{
+  display: none;
+}
+.chekout ul li {
+  list-style-type: none;
+  margin: 0.25rem 0;
+}
+.checkout ul li span{
+  margin-left: 0.25rem 0;
 }

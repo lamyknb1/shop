@@ -29,8 +29,9 @@ export class OrderService {
     return this.http.get<any>(this.url + '/cart/order-item/' + id);
   }
 
-  createItem(order): Observable<any> {
+  createItem(order: Order): Observable<any> {
     return this.http.post(this.url, order);
+    console.log(order)
   }
 
   editItem(order): Observable<any> {

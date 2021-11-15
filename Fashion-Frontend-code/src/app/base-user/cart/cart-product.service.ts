@@ -1,26 +1,21 @@
 import { Injectable } from '@angular/core';
 import {Product} from '../../models/product';
+import {ProductDetail} from '../../models/productDetail';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartProductService {
 
-  products: Product[] = [
-    {
-      productId: 1,
-      quantity: 2
-    },
-    {
-      productId: 2,
-      quantity: 1
-    }
-  ];
+  products: Product[] = JSON.parse(localStorage.getItem('products'));
+  detailProduct: ProductDetail[] = JSON.parse(localStorage.getItem('detail'));
 
   getProducts(): Product[] {
     return this.products;
   }
-
+  getDetails(): ProductDetail[]{
+    return this.detailProduct;
+  }
   findById(id: number): Product  {
     return this.products.find(product => product.productId === id)!;
 
@@ -37,6 +32,7 @@ export class CartProductService {
     if (product) {
       product.quantity = quantity || 0;
     }
+    localStorage.setItem("products",JSON.stringify(this.products));
   }
 
   removeProduct(id: number): boolean {
@@ -44,9 +40,32 @@ export class CartProductService {
 
     if (index !== -1) {
       this.products.splice(index, 1);
+      localStorage.setItem("products",JSON.stringify(this.products));
       return true;
     }
 
     return false;
+  }
+  addToCart(productItem: Product, detail){
+    productItem.quantity=parseInt(detail.value.quantity);
+    console.log(detail.value);
+    const  detailItem: ProductDetail = {
+      product: productItem,
+      size: detail.value.size,
+      color: detail.value.color,
+      quantity : detail.value.quantity
+    }
+    this.detailProduct.push(detailItem);
+    console.log(detailItem);
+    this.products.push(productItem);
+    localStorage.setItem("products",JSON.stringify(this.products));
+    localStorage.setItem("detail",JSON.stringify(this.detailProduct));
+
+  }
+  clearCart(){
+    this.products = [];
+    this.detailProduct = [];
+    localStorage.setItem("products",JSON.stringify(this.products));
+    localStorage.setItem("detail",JSON.stringify(this.detailProduct));
   }
 }

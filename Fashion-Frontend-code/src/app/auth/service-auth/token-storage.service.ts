@@ -51,12 +51,12 @@ export class TokenStorageService {
   //   window.sessionStorage.removeItem(NAME_KEY);
   //   window.sessionStorage.setItem(NAME_KEY, name);
   // }
-  // public getUser() {
-  //   return JSON.parse(sessionStorage.getItem(USER_KEY));
-  // }
-  // public getUserId(): string {
-  //   return sessionStorage.getItem(ID_KEY);
-  // }
+  public getUser() {
+    return JSON.parse(sessionStorage.getItem(USER_KEY));
+  }
+  public getUserId(): string {
+    return sessionStorage.getItem(ID_KEY);
+  }
   // public saveUserId(userId: string) {
   //   window.sessionStorage.removeItem(ID_KEY);
   //   window.sessionStorage.setItem(ID_KEY, userId);

@@ -19,3 +19,9 @@ img {
   width: 150px;
   height: 150px;
 }
+.description-hiden {
+  white-space: nowrap;
+  width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

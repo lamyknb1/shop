@@ -16,21 +16,13 @@
       <div class="collapse navbar-collapse" id="basicExampleNav">
 
         <!-- Links -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" >All
+        <ul class="navbar-nav mr-auto" >
+          <li class="nav-item active" *ngFor="let item of category">
+            <a class="nav-link" (click)="findByCategory(item.categoryName)">{{item.categoryName}}
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" >Shirts</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" >Sport wears</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" >Outwears</a>
-          </li>
+
         </ul>
         <!-- Links -->
         <form class="form-inline">
@@ -47,8 +39,12 @@
     <section class="text-center mb-4">
       <!--Grid row-->
       <div class="row wow fadeIn" >
-        <div class="col-lg-3 col-md-6 mb-4" *ngFor="let prod of productPage"  >
-        <app-card-product [product]="prod" productId="{{prod.productId}}"></app-card-product>
+        <div class="col-lg-3 col-md-6 mb-4 " *ngFor="let prod of productPage"  >
+          <div class="card" id="main-container">
+        <app-card-product [product]="prod" productId="{{prod.productId}}" ></app-card-product>
+
+          <button class="btn btn-round bg-info" (click)="onOpenModal(prod, 'add')" data-original-title="add" type="button" rel="tooltip" title=""> Thêm  vào giỏ hàng</button>
+          </div>
         </div>
       </div>
       <!--Grid row-->
@@ -92,6 +88,38 @@
       </ul>
     </nav>
     <!--Pagination-->
-
+    <div class="modal fade" id="updateEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeEditModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateEmployeeModalLabel">Thêm vào giỏ hàng</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form  [formGroup]="form" (ngSubmit)="form.valid && onSubmit()" novalidate>
+              <div class="form-group">
+                <label >Số lượng</label>
+                <input type="text" class="form-control" formControlName="quantity"
+                       name="quantity"  aria-describedby="emailHelp" placeholder="nhập số lượng" required >
+                <select class="example-full-width" formControlName="color" >
+                  <option value="null">Chọn màu</option>
+                  <option *ngFor="let color of listColor" value="{{color.colorId}}">{{color.colorName}}</option>
+                </select>
+                <select class="example-full-width" formControlName="size" >
+                  <option value="null">Chọn kích cỡ</option>
+                  <option *ngFor="let size of listSize" value="{{size.sizeId}}">{{size.sizeName}}</option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                <input type="submit" (click)="addTocart()" data-dismiss="modal" class="btn btn-primary" value="Thêm" >
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
